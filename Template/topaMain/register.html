@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% load static %} 
+    <link rel="stylesheet" href={% static 'css/nav.css' %}>
+</head>
+
+<body>
+    <nav class="navbar"></nav>
+    <div class="w-full h-screen  fixed inset-0 flex items-center justify-center">
+        <div class="w-2/5 p-4  h-auto mt-[100px]  bg-slate-100 drop-shadow-lg rounded-xl">
+
+            <div class="space-y-3 flex flex-col items-center justify-center">
+                <h1 class="text-4xl font-bold">Register</h1>
+                <p class=" md:font-semibold  text-sm ">Please Enter Your Details</p>
+            </div>
+            <form action="/register" method="POST">
+                {% csrf_token %}
+                 <div class="space-y-3 flex flex-col items-center mt-[60px] justtify-center">
+                    <div class="space-x-2">
+                        <label for="text" class="font-bold text-xl">Username:</label>
+                        <input type="text" class="form-control p-2 rounded-xl w-[160px] md:w-[300px]"
+                        id="username" name= "username" placeholder="Enter your username" Required>
+                    </div>
+                    <div class="space-x-2">
+                        <label for="text" class="font-bold text-xl">First name:</label>
+                        <input type="text" class="form-control p-2 rounded-xl w-[160px] md:w-[300px]"
+                        id="fname" name= "fname" placeholder="Enter your first name." Required>
+                    </div>
+                    <div class="space-x-2">
+                        <label for="text" class="font-bold text-xl">Last name:</label>
+                        <input type="text" class="form-control p-2 rounded-xl w-[160px] md:w-[300px]"
+                        id="lname" name= "lname" placeholder="Enter your last name." Required>
+                    </div>
+
+                    <div class="space-x-14">
+                        <label for="email" class="font-bold text-xl">Email:</label>
+                        <input type="email" id = "email" placeholder="Enter your email address." name= "email" class=" md:w-[300px] w-[160px] rounded-xl p-2 " Required>
+                    </div>
+                    <div class="space-x-14">
+                        <label for="text" class="font-bold text-xl">Phone:</label>
+                        <input type="text" id ="phone" placeholder="Enter your contact number." name= "phone" class=" md:w-[300px] w-[160px] rounded-xl p-2 " Required>
+                    </div>
+                    <div class="space-x-4">
+                        <label for="pass1" class="font-bold text-xl">Password:</label>
+                        <input type="password" class="form-control p-2 rounded-xl w-[160px] md:w-[300px]"
+                        id="pass1" name = "pass1" placeholder="New password" Required>
+                    </div>
+                    <div class="space-x-4">
+                        <label for="pass2" class="font-bold text-xl">Confirm Password:</label>
+                        <input type="password" class="form-control p-2 rounded-xl w-[160px] md:w-[300px]"
+                        id="pass2" name= "pass2"placeholder="Confirm Password" Required>
+                    </div>
+                </div>
+                <div class="space-x-8 mt-10 flex justify-center">
+                    <div class="">
+                        <input type="checkbox" class="form-checkbox" id="termsAccepted">
+                        <label for="termsAccepted" class="text-sm">I Accept Terms and Services</label>
+                    </div>
+                    <div class="">
+                        <input type="checkbox" class="form-checkbox" id="termsAccepted">
+                        <label for="termsAccepted" class="text-sm">I Am Not a Robot</label>
+                    </div>
+                </div>
+                <div class=" flex justify-center">
+                    <button type="submit" class="bg-green-500 p-1  mt-[20px]  rounded-md md:w-24   border-[1px] border-black font-bold">Register</button>
+                </div>
+
+            </form>
+            <div class="flex justify-center">
+                <a href="/login" class=" mt-7">Already have an account<span class="text-green-800">Login</span></a>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="{% static 'js/nav.js' %}"></script>
+</body>
+
+</html>

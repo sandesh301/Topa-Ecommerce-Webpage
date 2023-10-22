@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOPA - Your Cart</title>
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'img/Topa.png' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/shop.css' %}">
+    <link rel="stylesheet" href="{% static 'css/checkout.css' %}"> 
+    <script src="https://js.stripe.com/v3/"></script>
+
+</head>
+<body>
+    <nav class="navbar"></nav>
+    <div class="checkout-container">
+        <div class="checkout-step" id="step1">
+            
+            <h2>Step 1: Delivery Address</h2>
+            <form  class="delivery-form" id="delivery-form">
+                {% csrf_token %}
+                <label for="full_name">Full Name*</label>
+                <input type="text" id="full_name" name="full_name" required>
+    
+                <label for="email">Email*</label>
+                <input id="email" type="email" name="email" required>
+                
+                <label for="phone">Phone*</label>
+                <input id="phone" type="tel" name="phone" required>
+                
+                <label for="country">Country*</label>
+                <select id="country" name="country" required>
+                    <option value="">Select Country</option>
+                </select>
+                
+                <label for="city">City*</label>
+                <input type="text" id="city" name="city" required>
+    
+                <label for="address">Address*</label>
+                <input type="text" id="address" name="address" required>
+    
+                <label for="zip_postalcode">Zip/Postal Code*</label>
+                <input type="text" id="zip_postalcode" name="zip_postalcode" required>
+    
+                
+                <button type="submit" class="btn-next" id="btn-next-delivery">Next</button>
+            </form>
+        </div>
+
+        <!-- Step 2: Payment Options -->
+        <div class="checkout-step" id="step2" style="display: none;">
+            <h2>Step 2: Payment Options</h2>
+            <form class="payment-options-form">
+                <label>
+                    <input type="radio" name="payment-option" value="Stripe" required>
+                    Stripe
+                </label>
+                <label>
+                    <input type="radio" name="payment-option" value="Klarna" required>
+                    Klarna
+                </label>
+                <button type="button" class="btn-next" id="btn-next-payment">Next</button>
+            </form>
+        </div>
+
+        <!-- Step 3: Stripe Payment -->
+        <div class="checkout-step" id="step3" style="display: none;">
+            <h2>Step 3: Pay with Stripe</h2>
+            <form class="stripe-payment-form" id="stripe-payment-form">
+                {% csrf_token %}
+                <div id="card-element">
+                    <!-- Stripe card element will be inserted here -->
+                </div>
+                <div id="card-errors" role="alert"></div>
+                <button type="submit" class="btn-pay" id="btn-pay-stripe">Pay with Stripe</button>
+            </form>
+            <a href="{{ checkout_url }}" class="btn btn-primary">Proceed to Checkout</a>
+        </div>
+
+
+
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <ul>
+                {% for cart_item in cart_items %}
+                <li>
+                    <img src="{{ cart_item.product.Product_image.url }}" alt="{{ cart_item.product.Product_name }}">
+                    <span>{{ cart_item.product.Product_name }}</span>
+                    <span>{{ cart_item.quantity }}</span>
+                    <span>${{ cart_item.product.original_price }}</span>
+                </li>
+                {% endfor %}
+                <li>Subtotal: ${{ subtotal }}</li>
+                <li>Delivery Charge: ${{ delivery_charge }}</li>
+                <li>Total: ${{ total }}</li>
+            </ul>
+        </div>
+    </div>
+    <footer></footer>
+    <script src="{% static 'js/nav.js' %}"></script>
+    <script src="{% static 'js/footer.js' %}"></script>
+    <script src="{% static 'js/checkout.js' %}"></script>
+</body>
+</html>

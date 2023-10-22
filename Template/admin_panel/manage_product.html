@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/manage_prod.css' %}">
+
+</head>
+
+<body>
+    <a href="/panel"><button >Back</button></a>
+
+    <form method="POST" action="/manageprod" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <br>
+            <p>
+                <h3>Add Product</h3>
+            </p>
+            <div>
+                <p>Product name:</p>{{ form.Product_name }}
+            </div>
+            <div>
+                <p>Product price:</p>{{ form.Product_price }}
+            </div>
+            <div>
+                <p>Product quantity:</p>{{ form.Product_quantity }}
+            </div>
+            <div>
+                <p>Product description:</p>{{ form.Product_desc }}
+            </div>
+            <div>
+                <p>Product Category:</p>{{ form.Product_Category }}
+            </div>
+            <div>
+                <p>Product Image:</p>{{ form.Product_image }}
+            </div>
+            <div>
+                <br>
+                <button type="submit">Submit</button>
+                
+            </div>
+        </div>
+    </form>
+    <br>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Id</th>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Product Quantity</th>
+                <th>Product Description</th>
+                <th>Product Category</th>
+                <th>Product Image</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prod in products %}
+                <td>{{ prod.id }}</td>
+                <td>{{ prod.Product_name }}</td>
+                <td>{{ prod.Product_price }}</td>
+                <td>{{ prod.Product_quantity }}</td>
+                <td>{{ prod.Product_desc }}</td>
+                <td>{{ prod.Product_Category }}</td>
+                <td><img src="{{ prod.Product_image.url }}" alt="{{ prod.Product_name }}" width="50" height="50"></td> 
+                <td>
+                    <a href="/editProduct/{{ prod.id }}" class="edit-button">Edit</a> 
+                    <a href="/delete/{{ prod.id }}" class="delete-button">Delete</a> 
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

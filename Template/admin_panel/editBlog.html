@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Head content... -->
+</head>
+<body>
+    <form method="POST" action="/updateBlog/{{ blog.id }}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <br>
+            <p>
+                <h3>Edit Blog</h3>
+            </p>
+        </div>
+
+        <div>
+            <p>Title:</p>
+            <div>
+                <input type="text" name="Title" value="{{ blog.Title }}" />
+            </div>
+        </div>
+        <div>
+            <p>Author:</p>
+            <div>
+                <input type="text" name="Author" value="{{ blog.Author }}" />
+            </div>
+        </div>
+        <div>
+            <p>Tags:</p>
+            <div>
+                {% for tag in all_tags %}
+                    <input type="checkbox" name="Tags" value="{{ tag.id }}" {% if tag in selected_tags.all %}checked{% endif %}>
+                    <label>{{ tag.name }}</label><br>
+                {% endfor %}
+            </div>
+        </div>
+        <div>
+            <p>Content:</p>
+            <div>
+                <textarea name="Content" rows="4" cols="50">{{ blog.Content }}</textarea>
+            </div>
+        </div>
+        <div>
+            <p>Publication Date:</p>
+            <div>
+                <input type="text" name="Pub_date" value="{{ blog.Pub_date }}" disabled />
+            </div>
+        </div>
+        <div>
+            <br>
+            <button type="submit">Update</button>
+            <button herf="/manageblog">Back</button>
+        </div>
+    </form>
+</body>
+</html>

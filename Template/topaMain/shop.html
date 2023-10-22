@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <title>Shop</title>
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'img/Topa.png' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/shop.css' %}">
+</head>
+<body>
+    <nav class="navbar"></nav>
+
+    {% if selected_product %}
+    <section class="product-details justify-around flex-col md:flex-row space-x-7 xl:p-10">
+        <div class="image-slider mt-6">
+            <div class="product-images">
+                <img src="{{ selected_product.Product_image.url }}" alt="{{ selected_product.Product_name }}">
+            </div>
+        </div>
+        <section>
+            <div class="details mt-5 space-y-3 xl:space-y-6">
+                <h2 class="product-brand font-bold text-md text-black-500 md:text-xl xl:text-5xl">{{ selected_product.Product_name }}</h2>
+                <p class="product-short-des text-xl xl:text-3xl h-auto">{{ selected_product.Product_desc }}</p>
+                {% if selected_product.discount_percentage > 0 %}
+                <span class="product-price text-red-500">${{ selected_product.get_discounted_price }}</span>
+                <span class="product-actual-price text-yellow-700">${{ selected_product.original_price }}</span>
+                <span class="product-discount">({{ selected_product.discount_percentage }}% off)</span>
+                {% else %}
+                <span class="product-price text-red-500">${{ selected_product.original_price }}</span>
+                {% endif %}
+                <p>Available Quantity: {{ selected_product.Product_quantity }}</p>
+                <form method="POST" action="{% url 'add_to_cart' selected_product.id %}">
+                    {% csrf_token %}
+                    <div class="size-dropdown">
+                        <label class="product text-black-100 font-bold">Select Size</label>
+                        <select id="size-select" name="size" class="size-select">
+                            {% for size in selected_product.sizes.all %}
+                            <option value="{{ size }}">{{ size }}</option>
+                            {% endfor %}
+                        </select>
+                        <input type="hidden" name="selected_size" value="{{ size }}">
+                    </div>
+                    <label class="product text-black-100 font-bold">Select Quantity</label>
+                    <input type="number" name="quantity" min="1" max="{{ selected_product.Product_quantity }}" value="1" style="border: 1px solid black;">
+                    <br>
+                    <br>
+                    <button class="btn cart-btn" type="submit">Add to Cart</button>
+                    <br>
+                    <button class="btn">Buy Now</button>
+                </form>
+            </div>
+        </section>
+    </section>
+    {% else %}
+    {% if products|first %}
+    {% with first_product=products|first %}
+    <section class="product-details justify-around flex-col md:flex-row space-x-7 xl:p-10">
+        <div class="image-slider mt-6">
+            <div class="product-images">
+                <img src="{{ first_product.Product_image.url }}" alt="{{ first_product.Product_name }}">
+            </div>
+        </div>
+        <section>
+            <div class="details mt-5 space-y-3 xl:space-y-6">
+                <h2 class="product-brand font-bold text-md text-black-500 md:text-xl xl:text-5xl">{{ first_product.Product_name }}</h2>
+                <p class="product-short-des text-xl xl:text-3xl h-auto">{{ first_product.Product_desc }}</p>
+                {% if first_product.discount_percentage > 0 %}
+                <span class="product-price text-red-500">${{ first_product.get_discounted_price }}</span>
+                <span class="product-actual-price text-yellow-700">${{ first_product.original_price }}</span>
+                <span class="product-discount">({{ first_product.discount_percentage }}% off)</span>
+                {% else %}
+                <span class="product-price text-red-500">${{ first_product.original_price }}</span>
+                {% endif %}
+                <p>Available Quantity: {{ first_product.Product_quantity }}</p>
+                <form method="POST" action="{% url 'add_to_cart' first_product.id %}">
+                    {% csrf_token %}
+                    <div class="size-dropdown">
+                        <label class="product text-black-100 font-bold">Select Size</label>
+                        <select id="size-select" name="size" class="size-select">
+                            {% for size in first_product.sizes.all %}
+                            <option value="{{ size }}">{{ size }}</option>
+                            {% endfor %}
+                        </select>
+                        <input type="hidden" name="selected_size" value="{{ size }}">
+                    </div>
+                    <label class="product text-black-100 font-bold">Select Quantity</label>
+                    <input type="number" name="quantity" min="1" max="{{ first_product.Product_quantity }}" value="1" style="border: 1px solid black;">
+                    <br>
+                    <br>
+                    <button class="btn cart-btn" type="submit">Add to Cart</button>
+                    <br>
+                    <button class="btn">Buy Now</button>
+                </form>
+            </div>
+        </section>
+    </section>
+    {% endwith %}
+    {% endif %}
+    {% endif %}
+    <br><br><br><br><br><br><br><br>
+    <section class="product" style="font-family: 'Bangers';">
+        <button class="pre-btn"><i class="fa fa-angle-left" style='font-size:80px'></i></button>
+        <button class="nxt-btn"><i class="fa fa-angle-right" style='font-size:80px'></i></button>
+        <div class="product-container">
+            {% for product in products %}
+            <div class="product-card">
+                <div class="product-image">
+                    {% if product.discount_percentage > 0 %}
+                    <span class="discount-tag">{{ product.discount_percentage }}% off</span>
+                    {% endif %}
+                    <img src="http://127.0.0.1:8000/media/{{ product.Product_image }}" class="product-thumb" alt="{{ product.Product_name }}">
+                    <form method="POST" action="{% url 'add_to_wishlist' product.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="card-btn"><img src = 'static/img/black heart'></button>
+                        
+                    </form>
+                </div>
+                <div class="product-info">
+                    <a href="{% url 'shop-detail' product.id %}"><h2 class="product-brand">{{ product.Product_name }}</h2></a>
+                    <p class="product-short-des">{{ product.Product_desc }}</p>
+                    {% if product.discount_percentage > 0 %}
+                    <span class="price">${{ product.get_discounted_price }}</span><span class="actual-price">${{ product.original_price }}</span>
+                    {% else %}
+                    <span class="price">${{ product.original_price }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <div class="banner">
+        <div class="banner-container">
+            <img class="banner-img" src="https://assets-lighthouse.alphacamp.co/uploads/image/file/14376/template.png" alt="banner-photo">
+            <div class="banner-info">
+                <h3>Get the latest product drops in your inbox!<br>Sign up for our Newsletter.</h3>
+                <div class="quick-sign-up-box">
+                    <input type="text" placeholder="Enter email for news" class="email-input">
+                    <button class="submit-quick-sign-up">SIGN UP!</button>
+                </div>
+                <p>By registering you agree with our <a href="privacy.html">Privacy Policy</a></p>
+            </div>
+        </div>
+    </div>
+
+    <footer></footer>
+
+    <script src="{% static 'js/nav.js' %}"></script>
+    <script src="{% static 'js/home.js' %}"></script>
+    <script src="{% static 'js/footer.js' %}"></script>
+    <script src="{% static 'js/shop.js' %}"></script>
+
+</body>
+</html>

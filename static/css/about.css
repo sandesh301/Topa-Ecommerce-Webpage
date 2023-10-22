@@ -1,0 +1,188 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Oswald", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+
+
+
+.we-are-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  padding: 50px 0;
+  background-color: #ffffff;
+  position: relative;
+}
+
+#about-us-section {
+  background-color: #ffffff;
+}
+
+#history-section {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.about-us-image,
+.history-image {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.about-us-image img,
+.history-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.about-us-info,
+.history-info {
+  width: 50%;
+  padding: 0 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.about-us-info h2,
+.history-info h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.about-us-info p,
+.history-info p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.about-us-info a,
+.history-info a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.about-us-info a:hover,
+.history-info a:hover {
+  background-color: #404040;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 900px;
+  margin: auto;
+  font-family: "Arial", sans-serif;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px 0 rgba(2, 23, 60, 0.36);
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+}
+
+.card-left {
+  flex: 1;
+  text-align: center;
+}
+
+.card-right {
+  flex: 2;
+  padding-left: 20px;
+
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+}
+
+.card h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.card .title {
+  color: #555;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.card .description {
+  font-size: 14px;
+  color: #666;
+  text-align: left;
+  margin-top: 20px;
+}
+
+.card h2 {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.card .education {
+  color: #555;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 992px) {
+
+  .about-us-image,
+  .history-image,
+  .about-us-info,
+  .history-info {
+    width: 100%;
+  }
+
+  .about-us-info,
+  .history-info {
+    padding: 0 20px;
+  }
+
+  .card {
+    max-width: 400px;
+  }
+
+
+}

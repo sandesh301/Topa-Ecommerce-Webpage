@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'img/Topa.png' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+</head>
+<body>
+    <nav class="navbar"></nav>
+
+    <div class="we-are-block" id="about-us-section">
+        <div class="about-us-image">
+            <img src="{% static 'img/Clothes_rack.jpg' %}" alt="About Us Image">
+        </div>
+        <div class="about-us-info">
+            <h2>ABOUT TŌPA</h2>
+            <p>TŌPA is a vertically integrated company, having its own sourcing, production, marketing, and sales unit, which allows us to take sustainable choices and ethical stands at every step of the supply chain. The exploitative problems of the industry can only be confronted when we are in complete control of our actions.</p>
+            <a href="about1" title="About Us Button">ABOUT US</a>
+        </div>
+    </div>
+
+    <div class="we-are-block" id="history-section">
+        <div class="history-image">
+            <img src="{% static 'img/1.jpg' %}" alt="History Image">
+        </div>
+        <div class="history-info">
+            <h2>Sustainability & Ethical Values</h2>
+            <p>Deadstock Fabrics, Clean/Renewable Energy, Lean Production, Sustainable Packaging, Fair Remuneration for Workers, Safe & Comfortable Working Conditions, Transparent Sourcing & Operations.</p>
+            <a href="learn" title="History Button">Learn More</a>
+        </div>
+    </div>
+
+<div class="card">
+    <div class="card-content">
+        <div class="card-left">
+            <img src="{% static 'img/Nikita.jpg' %}" alt="Nikita Deuja">
+            <h1>Nikita Deuja</h1>
+            <p class="title">Founder & Creative Director</p>
+        </div>
+        <div class="card-right">
+            <p class="description">
+                Nikita Deuja is a Fashion Designer originally from Kathmandu, Nepal. She is an alumni of Fashion Institute of Technology, New York with AAS and BFA degree in fashion design and specialization in knitwear. She is a sustainable designer who loves working with unconventional materials.
+                <br><br>
+                She has knowledge of hand and machine knitting, draping, sewing, patternmaking, Photoshop, Illustrator, Design Research, Mood board creating, Market Research, PLM, Tech Pack, CLO 3D, STOLL M1, Kaledo print, weave & knit, Digital CAD.
+            </p>
+            <h2>Education</h2>
+            <p class="education">Fashion Institute of Technology, New York</p>
+        </div>
+    </div>
+</div>
+
+
+    <footer></footer>
+    <script src="{% static 'js/nav.js' %}"></script>
+    <script src="{% static 'js/footer.js' %}"></script>
+</body>
+</html>

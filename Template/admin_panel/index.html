@@ -1,0 +1,86 @@
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<div class="dashboard">
+    <h2>Admin Panel</h2>
+    <ul>
+        <li><a href="{% url 'manage-product' %}" class="product-button">Add Products</a></li>
+        <li><a href="{% url 'manage-blog' %}">Add Blogs/News</a></li>
+        <li><a href="">Manage Testimonials</a></li>
+    </ul>
+</div>
+<div class="header">
+    <a href="{% url 'admin_login' %}" class="logout-button">Logout</a>
+</div>
+
+<br>
+<br>
+<h3>Products<h3>
+<table>
+    <thead>
+        <tr>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Product Price</th>
+            <th>Product Quantity</th>
+            <th>Product Description</th>
+            <th>Product Category</th>
+            <th>Product Image</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in product %}
+            <td>{{ product.id }}</td>
+            <td>{{ product.Product_name }}</td>
+            <td>{{ product.Product_price }}</td>
+            <td>{{ product.Product_quantity }}</td>
+            <td>{{ product.Product_desc }}</td>
+            <td>{{ product.Product_Category }}</td>
+            <td><img src="{{ product.Product_image.url }}" alt="{{ product.Product_name }}" width="50" height="50"></td> 
+            <td>
+                <a href="/editProduct/{{ product.id }}" class="edit-button">Edit</a> 
+                <a href="/delete/{{ product.id }}" class="delete-button">Delete</a> 
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+<br>
+<h3>Blog<h3>
+<table>
+    <thead>
+        <tr>
+            <th>Blog Post ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Tags</th>
+            <th>Content</th>
+            <th>Publication Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for blog in all_blog %}
+        <tr>
+            <td>{{ blog.id }}</td>
+            <td>{{ blog.Title }}</td>
+            <td>{{ blog.Author }}</td>
+            <td>
+                {% for tag in blog.Tags.all %}
+                    {{ tag.name }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </td>
+            <td>{{ blog.Content }}</td>
+            <td>{{ blog.Pub_date }}</td>
+            <td>
+                <a href="/editBlog/{{ blog.id }}" class="edit-button">Edit</a>
+                <a href="/deleteBlog/{{ blog.id }}" class="delete-button">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

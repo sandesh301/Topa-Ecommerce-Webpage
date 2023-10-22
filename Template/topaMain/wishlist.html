@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOPA</title>
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'img/Topa.png' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/shop.css' %}">
+</head>
+<body>
+    <nav class="navbar"></nav>
+    <h1 class="text-3xl font-bold mb-4">Your Wishlist</h1>
+    {% if wishlist.products.all %}
+        <table class="table-auto w-full border-collapse border border-gray-300">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 text-left">Product Name</th>
+                    <th class="px-4 py=2 text-left">Image</th>
+                    <th class="px-4 py-2 text-left">Available Quantity</th>
+                    <th class="px-4 py-2 text-left">Size</th>
+                    <th class="px-4 py-2 text-left">Price</th>
+                    <th class="px-4 py-2 text-left">Add to Cart</th>
+                    <th class="px-4 py-2 text-left">Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in wishlist.products.all %}
+                    <tr>
+                        <td class="px-4 py-2">
+                            <a href="{% url 'product-detail' product.id %}" class="underline">{{ product.Product_name }}</a>
+                        </td>
+                        <td class="px-4 py-2"><img src="{{ product.Product_image.url }}" alt="{{ prod.Product_name }}" width="50" height="50"></td>
+                        <td class="px-4 py-2">{{ product.Product_quantity }}</td>
+                        <form method="POST" action="{% url 'add_to_cart' product.id %}">
+                            {% csrf_token %}
+                        <td class="px-4 py-2">
+                            <select id="size-select" name="size" class="border rounded px-2 py-1">
+                                {% for size in product.sizes.all %}
+                                    <option value="{{ size }}">{{ size }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                        <td class="px-4 py-2">${{ product.original_price }}</td>
+                        <td class="px-4 py-2">
+
+                                <input type="hidden" name="quantity" value="1">
+
+                                <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded">Add to Cart</button>
+                            </form>
+                        </td>
+                        <td class="px-4 py-2">
+                            <form method="POST" action="{% url 'remove_from_wishlist' product.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Your wishlist is empty.</p>
+    {% endif %}
+    <footer></footer>
+
+    <script src="{% static 'js/nav.js' %}"></script>
+    <script src="{% static 'js/footer.js' %}"></script>
+</body>
+</html>

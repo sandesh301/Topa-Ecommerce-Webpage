@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Products </title>
+        {% load static %}
+        <link rel="icon" type="image/x-icon" href="static/img/Topa.png">
+
+        <link rel="stylesheet" href= {% static 'css/home.css' %} >
+        <link rel="stylesheet" href= {% static 'css/product.css' %} >
+
+    </head>
+    <body>
+        <nav class="navbar"></nav>
+
+        <section class="product-details">
+            <div class="image-slider">
+                <div class="product-images">
+                    <img src="static/img/1 (16).jpg" class="active" alt="">
+                    <img src="static/img/1 (1).jpg" alt="">
+                    <img src="static/img/1 (10).jpg" alt="">
+                    <img src="static/img/1 (11).jpg" alt="">
+                </div>
+            </div>
+            <section>
+                <div class="details">
+                    <h2 class="product-brand">Calvin Klein</h2>
+                    <p class="product-short-des">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                    <span class="product-price">$99</span>
+                    <span class="product-actual-price">$200</span>
+                    <span class="product-discount">( 50% off )</span>
+            
+                    <p class="product-sub-heading">Select Size</p>
+            
+                    <input type="radio" name="size" value="s" checked hidden id="s-size">
+                    <label for="s-size" class="size-radio-btn check">S</label>
+                    <input type="radio" name="size" value="m" hidden id="m-size">
+                    <label for="m-size" class="size-radio-btn">M</label>
+                    <input type="radio" name="size" value="l" hidden id="l-size">
+                    <label for="l-size" class="size-radio-btn">L</label>
+                    <input type="radio" name="size" value="xl" hidden id="xl-size">
+                    <label for="xl-size" class="size-radio-btn">XL</label>
+                    <input type="radio" name="size" value="xxl" hidden id="xxl-size">
+                    <label for="xxl-size" class="size-radio-btn">XXL</label>
+            
+                    <button class="btn cart-btn">Add to Cart</button>
+                    <button class="btn">Add to Wishlist</button>
+                </div>
+            </section> 
+        </section>
+
+        <section class="detail-des">
+            <h2 class="heading">Description</h2>
+            <p class="des">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ......</p>
+        </section>
+        
+        <!--cards-container-->
+        <section class="product">
+            <button class="pre-btn"><img src="static/img/Background.png" alt=""></button>
+            <button class="nxt-btn"><img src="static/img/Background.png" alt=""></button>
+            <div class="product-container">
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="img/1 (2).jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">a short line about the cloth..</p>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="img/4 (13).jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">a short line about the cloth..</p>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="img/6 (18).jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">a short line about the cloth..</p>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="img/2 (13).jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">a short line about the cloth..</p>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="img/5 (5).jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">a short line about the cloth..</p>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <img src="img/3 (11).jpg" class="product-thumb" alt="">
+                        <button class="card-btn">add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">a short line about the cloth..</p>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div>
+                </div>
+
+            
+            </div>
+        </section>
+
+        <footer></footer>
+
+        <script src="{% static 'js/nav.js' %}"></script>
+        <script src="{% static 'js/home.js' %}"></script>
+        <script src="{% static 'js/footer.js' %}"></script>
+        <script src="{% static 'js/product.js' %}"></script>
+    </body>
+</html>    

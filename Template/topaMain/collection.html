@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+        <title> Collection </title>
+        {% load static %}
+        <link rel="icon" type="image/x-icon" href="img/Topa.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href={% static "css/home.css" %}>
+        <link rel="stylesheet" href={% static "css/collection.css"%}>
+
+
+    </head>
+    <body>
+        <nav class="navbar"></nav>
+        
+        <div class="container">
+            <img src="{% static 'img/Clothes_rack.jpg' %}" alt="Snow" style="width:100%">
+            <div class="collection-buttons-container">
+                <div class="collection-buttons">
+                    {% for collection in collections %}
+                        <a href="{% url 'collection-by-id' collection.id %}">
+                            <button class="btn">{{ collection.name }}</button>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+    
+        <div class="exhibit-container">
+            <div class="category">
+                <div class="category-filter">
+                    <select name="size" id="size" class="category-select">
+                        <label>
+                        <option value="" selected>Select Size</option>
+                        <option value="Small" selected>Small</option>
+                        <option value="Medium" selected>Medium</option>
+                        <option value="Large" selected>Large</option>
+                        <option value="Extra Large" selected>Extra Large</option>
+                        <!-- Size options will be dynamically populated here using JavaScript -->
+                    </select>
+                    <select name="sort" id="sort" class="category-select">
+                        <option value="" selected>Sort</option>
+                        <option value="Price high to low">Price high to low</option>
+                        <option value="Price low to high">Price low to high</option>
+                    </select>
+                    <select name="category" id="category" class="category-select">
+                        <option value="" selected>Category</option>
+                        <option value="Price high to low">Price high to low</option>
+                        <option value="Price low to high">Price low to high</option>
+                    </select>
+                </div>
+            </div>
+            
+            <section>
+                <div class="section">
+                    <div class="section2">
+                        <div class="container">
+                            {% for product in products %}
+                                <div class="items">
+                                    <div class="img"><img src="{{ product.Product_image.url }}" alt="{{ product.Product_name }}"></div>
+                                    <div class="name"><a href="{% url 'shop-detail' product.id %}">{{ product.Product_name }}</a></div>
+                                    <div class="price">${{ product.original_price }}</div>
+                                    <div class="info">{{ product.Product_desc }}</div>
+                                    <button class="button">
+                                        <span>Add to cart</span>
+                                    </button>
+                                    <button class="button">
+                                        <span>Add to wishlist</span>
+                                    </button>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    
+        <footer></footer>
+        <script>
+
+        </script>
+        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+        <script src={% static "js/nav.js" %}></script>
+        <script src={% static "js/footer.js" %}></script>
+        <script src={% static "js/collection.js" %}></script>
+    </body>
+    </html>

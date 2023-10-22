@@ -1,0 +1,508 @@
+@import 'nav.css';
+@import 'footer.css';
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+.hero-section {
+  width: 100%;
+  height: 20%;
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-section .logo {
+  height: 150px;
+  display: block;
+  margin: auto;
+}
+
+@media (max-width:768px) {
+  .text-overlay h1 {
+    font-size: 1.8rem;
+    margin-top: -200px;
+  }
+}
+
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  /* Adjust vertical position as needed */
+  left: 35%;
+  /* Adjust horizontal position as needed */
+  transform: translate(-50%, -50%);
+  color: #fff;
+  /* Set text color */
+  font-size: 1.5rem;
+  /* Set font size */
+  font-weight: bold;
+  text-align: left;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  /* Optional text shadow */
+}
+
+
+.product {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.product-category {
+  padding: 0 10vw;
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 40px;
+  text-transform: capitalize;
+}
+
+.product-container {
+  padding: 0 10vw;
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: auto;
+  transition: width 2s;
+
+}
+
+.product-container::-webkit-scrollbar {
+  display: none;
+}
+
+.product-card {
+  flex: 0 0 auto;
+  width: 500px;
+  height: 700px;
+  margin-right: 40px;
+}
+
+.product-image {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+}
+
+.product-thumb {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+}
+
+.discount-tag {
+  position: absolute;
+  background: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  color: #ff7d7d;
+  right: 10px;
+  top: 10px;
+  text-transform: capitalize;
+}
+
+.card-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  width: 50%;
+  text-transform: capitalize;
+  border: none;
+  outline: none;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.5s;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.product-card:hover .card-btn {
+  opacity: 1;
+  transition: width 2s;
+}
+
+.card-btn:hover {
+  background: #efefef;
+}
+
+.product-info {
+  width: 100%;
+  height: 100px;
+  padding-top: 10px;
+}
+
+.product-brand {
+  text-transform: uppercase;
+}
+
+.product-short-des {
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  overflow: hidden;
+  opacity: 0.5;
+  text-transform: capitalize;
+  margin: 5px 0;
+}
+
+
+.price {
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.actual-price {
+  margin-left: 20px;
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.pre-btn,
+.nxt-btn {
+  border: none;
+  width: 5vw;
+  height: 80%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 8;
+}
+
+.pre-btn {
+  left: 0;
+
+}
+
+.nxt-btn {
+  right: 0;
+
+}
+
+.pre-btn img,
+.nxt-btn img {
+  opacity: 0.2;
+}
+
+.pre-btn:hover img,
+.nxt-btn:hover img {
+  opacity: 1;
+}
+
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% - 10px));
+  display: flex;
+  min-width: 50px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #000000;
+  border-radius: 12px;
+  box-shadow: 0 5px 26px -8px rgba(0, 0, 0, 0.3);
+  z-index: 20;
+  transition: all 0.2s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+}
+
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 30%;
+  height: 30%;
+  background: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+  transition: all 0.2s ease;
+  opacity: 0;
+}
+
+.modal__overlay.active {
+  opacity: 0;
+}
+
+.modal__close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.modal__left {
+  text-align: center;
+  font-size: 24px;
+  text-transform: uppercase;
+  background-color: #242424;
+  color: #fefefe;
+  border-radius: 12px;
+  box-shadow: 17px 0 17px -8px rgba(0, 0, 0, 0.3);
+  padding: 20px 20px;
+}
+
+.modal__left span {
+  display: block;
+  font-size: 36px;
+}
+
+.modal__discount {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  color: #ebff00;
+  margin-top: 32px;
+}
+
+.modal__discount span {
+  font-size: 60px;
+}
+
+.modal__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px;
+}
+
+.modal__text {
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 22px;
+  font-family: 'Comfortaa';
+}
+
+.modal__info {
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.modal__button {
+  align-self: center;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: hsla(0, 0%, 100%, 0.63);
+  border-radius: 12px;
+  padding: 10px 32px;
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  flex: 15%;
+  max-width: 40%;
+  padding: 0 4px;
+  transition: transform .2s;
+}
+
+
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.container img {
+  width: 100%;
+  height: 100%;
+}
+
+.container .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: hwb(0 100% 0% / 0.719);
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.container .btn:hover {
+  background-color: rgba(180, 180, 180, 0.678);
+}
+
+.banner {
+  width: 100%;
+  padding: 0 2rem;
+  background-color: #ededed;
+}
+
+.banner-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 0 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-img {
+  position: absolute;
+  bottom: -30px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.banner-info {
+  position: relative;
+  z-index: 5;
+  width: 60%;
+  padding-bottom: 1rem;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0.8rem;
+  font-size: 0.9rem;
+  cursor: default;
+}
+
+.banner-info h3 {
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.banner-info a {
+  text-decoration: underline;
+}
+
+.quick-sign-up-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.email-input {
+  width: 50%;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 100px 0 0 100px;
+}
+
+.submit-quick-sign-up {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 0 100px 100px 0;
+  background-color: #222;
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.email-input:focus,
+.submit-quick-sign-up:focus {
+  outline: none;
+}
+
+.submit-quick-sign-up:hover {
+  opacity: 0.9;
+}
+
+.submit-quick-sign-up:active {
+  opacity: 0.8;
+}
+
+/* Style for the horizontal image slider container */
+.external {
+  overflow: hidden;
+  max-height: auto;
+  /* Remove the fixed maximum height */
+  width: 100%;
+  /* Set the container's width to 110% */
+  transform: scale(0.9);
+  /* Scale down the container to fit the cards */
+  transform-origin: top left;
+  /* Set the scale transformation origin */
+}
+
+/* Style for the horizontal scroll wrapper */
+.horizontal-scroll-wrapper {
+  display: flex;
+  flex-direction: row;
+  /* Make the items display in a row */
+  overflow-x: auto;
+  /* Enable horizontal scrolling */
+  overflow-y: hidden;
+  /* Hide vertical scrollbar */
+  white-space: nowrap;
+  /* Prevent items from wrapping to the next line */
+}
+
+/* Style for each image wrapper within the slider */
+.img-wrapper {
+  flex: 0 0 auto;
+  /* Allow items to grow or shrink, but don't let them shrink */
+  margin-right: 20px;
+  /* Adjust the margin between images as needed */
+}
+
+/* Style for the card (wrapper) containing each image */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* Align content to the bottom of the card */
+  text-align: center;
+  height: 100%;
+  /* Make the card height 100% of the container */
+  width: 11%;
+  /* Set the card's width to 110% */
+  transform: scale(0.9091);
+  /* Scale down the card to fit within the container */
+  transform-origin: top left;
+  /* Set the scale transformation origin */
+}
+
+/* Style for the images within each wrapper */
+.img-wrapper img {
+  max-width: 100%;
+  /* Ensure images don't exceed their container width */
+  height: auto;
+  /* Maintain the aspect ratio */
+}

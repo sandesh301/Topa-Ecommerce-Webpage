@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/manageBlog.css' %}">
+</head>
+
+<body>
+    <a href="/panel"><button>Back</button></a>
+    <form method="POST" action="/manageblog" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <br>
+            <p>
+                <h3>Add Blog Post</h3>
+            </p>
+            <div>
+                <p>Title:</p>{{ form.Title }}
+            </div>
+            <div>
+                <p>Author:</p>{{ form.Author }}
+            </div>
+            <div>
+                <p>Tags:</p>{{ form.Tags }}
+            </div>
+            <div>
+                <p>Content:</p>{{ form.Content }}
+            </div>
+            <div>
+                <br>
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+    <br>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th>Blog Post ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Tags</th>
+                <th>Content</th>
+                <th>Publication Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for blog in all_blog %}
+            <tr>
+                <td>{{ blog.id }}</td>
+                <td>{{ blog.Title }}</td>
+                <td>{{ blog.Author }}</td>
+                <td>
+                    {% for tag in blog.Tags.all %}
+                        {{ tag.name }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <td>{{ blog.Content }}</td>
+                <td>{{ blog.Pub_date }}</td>
+                <td>
+                    <a href="/editBlog/{{ blog.id }}" class="edit-button">Edit</a>
+                    <a href="/deleteBlog/{{ blog.id }}" class="delete-button">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

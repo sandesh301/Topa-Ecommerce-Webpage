@@ -1,0 +1,158 @@
+.card {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    height : 3100px;
+    width: 1800px;
+    border-radius: 30px;
+    background-color: #9c9faf;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card .primary-heading {
+    text-align: center;
+    font-family: josefin sans;
+    color: white;
+    padding-top: 30px ;
+    font-size: 4em;
+}
+
+.h3 {
+    font-family: josefin sans;
+    color: rgb(0, 0, 0);
+    margin-left: 50px;
+    margin-right: 25px;
+    padding-top: 50px;
+    font-size: 1em;
+    line-height: 1.3em;
+    font-weight: 500;
+}
+.paragraph {
+    font-family: josefin sans;
+    color: rgb(0, 0, 0);
+    margin-left: 50px;
+    margin-right: 25px;
+    padding-top: 30px;
+    font-size: 1em;
+    line-height: 1.3em;
+    font-weight: 500;
+}
+
+.bold {
+    font-weight: 700;
+    color: white;
+}
+
+.footer-heading {
+    text-align: center;
+    font-family: josefin sans;
+    color: white;
+    margin-bottom: 50px;
+    font-size: 2em;
+    line-height: 35px;
+}
+
+@media only screen and (max-width: 1218px) {
+    .card {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        height : 2050px;
+        width: 1000px;
+        border-radius: 30px;
+        background-color: #333541;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media only screen and (max-width: 1012px) {
+    .card {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        height : 2350px;
+        width: 800px;
+        border-radius: 30px;
+        background-color: #333541;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media only screen and (max-width: 832px) {
+    .card {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        height : 2950px;
+        width: 600px;
+        border-radius: 30px;
+        background-color: #333541;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .card .primary-heading {
+        font-size: 3.5em;
+    }
+
+    .footer-heading {
+        font-size: 1.5em;
+    }
+}
+
+@media only screen and (max-width: 626px) {
+    .card {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        height : 3850px;
+        width: 450px;
+        border-radius: 30px;
+        background-color: #333541;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .header-mobile {
+        display: block;
+    }
+
+    .main-header {
+        display: none;
+    }
+
+    .card .primary-heading {
+        font-size: 3em;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .card {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        height : 5050px;
+        width: 350px;
+        border-radius: 30px;
+        background-color: #333541;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card .primary-heading {
+        font-size: 2em;
+    }
+}
+
+@media only screen and (max-width: 365px) {
+    .card {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        height : 6300px;
+        width: 290px;
+        border-radius: 30px;
+        background-color: #333541;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card .primary-heading {
+        font-size: 2em;
+    }
+}

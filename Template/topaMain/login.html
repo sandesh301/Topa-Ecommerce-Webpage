@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load socialaccount %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% load static %}
+    <link rel="stylesheet" href={% static "css/nav.css" %}>
+
+</head>
+
+<body>
+    <nav class="navbar"></nav>
+    <div class="w-full h-screen fixed inset-0 flex items-center justify-center">
+        <div class="w-2/5  h-[500px] mt-[100px] bg-slate-100 drop-shadow-lg rounded-xl">
+
+            <div class="space-y-3 flex flex-col items-center justtify-center">
+                <h1 class="text-4xl font-bold">Login</h1>
+                <p class=" md:font-semibold  text-sm ">Please Enter Your User Email and Password</p>
+            </div>
+            <form action="/login" method="POST">
+                {% csrf_token %}
+                <div class="space-y-3 flex flex-col items-center mt-[60px] justtify-center">
+                    <label for="text" class="font-bold text-xl">Username</label>
+                    <input type="text" id="username" name="username" class="form-control p-2 rounded-xl w-[160px] md:w-[300px]" placeholder="Enter your username" required>
+                    <label for="password" class="font-bold text-xl">Password</label>
+                    <input type="password" id="pass1" name="pass1" placeholder="Enter your password" class=" md:w-[300px] w-[160px] rounded-xl p-2 ">
+                </div>
+                <div class=" flex justify-between">
+                    <button type="submit" class="bg-green-500 p-1 ms-[50px] mt-[20px] md:ms-[10px] rounded-md md:w-24 lg:ms-[90px] xl:ms-[160px] border-[1px] border-black font-bold">Login</button>
+                    <a href="#" class="text-blue-500 text-sm mt-[30px] me-[150px] ">Forgot password?</a>
+                </div>
+                <div class="flex justify-center">
+                    <a href="/register" class=" mt-7">Don`t have an account <span class="text-green-800">Register</span></a>
+                </div>
+                <div class="flex justify-center">
+                    <a href="{% provider_login_url 'google' %}" class="bg-red-500 text-white px-4 py-2 rounded-md mt-4">
+                        Login with <img src="{% static 'img/google.png' %}" width="20" height="20" alt="Google">
+
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{% static 'js/nav.js' %}"></script>
+</body>
+
+</html>

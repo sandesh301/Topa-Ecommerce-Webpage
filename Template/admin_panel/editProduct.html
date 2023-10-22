@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/editProduct.css' %}">
+</head>
+<body>
+    <form method="POST" action="/updateProduct/{{ product.id }}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <br>
+            <h3>Edit Product</h3>
+        </div>
+
+        <div>
+            <p>Product Name:</p>
+            <input type="text" name="Product_name" value="{{ product.Product_name }}" />
+        </div>
+        <div>
+            <p>Product Price:</p>
+            <input type="number" name="Product_price" step="0.01" value="{{ product.original_price }}" />
+        </div>
+        <div>
+            <p>Product Quantity:</p>
+            <input type="number" name="Product_quantity" value="{{ product.Product_quantity }}" />
+        </div>
+        <div>
+            <p>Product Description:</p>
+            <textarea name="Product_desc" rows="4" cols="50">{{ product.Product_desc }}</textarea>
+        </div>
+
+        <div>
+            <p>Product Category:</p>
+            <select name="Product_Category">
+                <option value="" selected>None</option>
+                {% for category in categories %}
+                <option value="{{ category.id }}" {% if category.id == product.Product_Category.id %} selected {% endif %}>
+                    {{ category.categoryname }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <p>Product Tags:</p>
+            <select name="tags" multiple>
+                {% for tag in tags %}
+                <option value="{{ tag.id }}" {% if tag in product.tags.all %} selected {% endif %}>
+                    {{ tag.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <p>Product Collection:</p>
+            <select name="collection">
+                <option value="" selected>None</option>
+                {% for col in collections %}
+                <option value="{{ col.id }}" {% if col.id == product.collection.id %} selected {% endif %}>
+                    {{ col.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <p>Product Sizes:</p>
+            <select name="sizes" multiple>
+                {% for size in sizes %}
+                <option value="{{ size.id }}" {% if size in product.sizes.all %} selected {% endif %}>
+                    {{ size.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <p>Product Images:</p>
+            <input type="file" name="Product_image" multiple />
+        </div>
+        <div>
+            <br>
+            <button type="submit">Update</button>
+        </div>
+    </form>
+</body>
+</html>

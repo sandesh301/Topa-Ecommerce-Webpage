@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'img/Topa.png' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/shop.css' %}">
+    <link rel="stylesheet" href="{% static 'css/checkout.css' %}"> 
+    <title>Klarna Checkout</title>
+</head>
+<body>
+    <nav></nav>
+    <h1>Order Summary</h1>
+    <ul>
+        {% for cart_item in cart_items %}
+            <li>
+                {{ cart_item.product.Product_name }} -
+                Quantity: {{ cart_item.quantity }} -
+                Price: ${{ cart_item.product.get_discounted_price }}
+            </li>
+        {% endfor %}
+    </ul>
+    <p>Subtotal: ${{ subtotal }}</p>
+    <p>Delivery Charge: ${{ delivery_charge }}</p>
+    <p>Total: ${{ total }}</p>
+
+    <!-- Add a button/link to redirect to Klarna's checkout page -->
+    <a href="{{ checkout_url }}" class="btn btn-primary">Proceed to Klarna Checkout</a>
+    <footer></footer>
+    <script src="{% static 'js/nav.js' %}"></script>
+    <script src="{% static 'js/footer.js' %}"></script>
+    <script src="{% static 'js/checkout.js' %}"></script>
+</body>
+</body>
+</html>

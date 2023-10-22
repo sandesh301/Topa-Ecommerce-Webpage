@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #000000;
+    z-index: 9;
+}
+
+.nav {
+    padding: 0px 10vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.brand-logo {
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 101.5px);
+    width: 150px;
+    height: 100px;
+    cursor: pointer;
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
+
+}
+
+
+.nav-items {
+    margin-left: -60px;
+    margin-top: 30px;
+    color: white;
+}
+
+.nav-items img {
+    width: 40px;
+}
+
+.nav-items a {
+    margin-left: 20px;
+    margin-top: 30px;
+    color: white;
+}
+
+.nav-items a img {
+    width: 40px;
+}
+
+.links-container {
+    width: auto;
+    display: flex;
+    padding: 15px 10vw;
+    justify-content: center;
+    list-style: none;
+    font-family: 'Bangers';
+}
+
+.link {
+    text-transform: capitalize;
+    padding: 0 10px;
+    margin: 0 5px;
+    text-decoration: none;
+    color: hsl(0, 0%, 100%);
+    opacity: 0.5;
+    transition: .5s;
+}
+
+.link:hover {
+    opacity: 1;
+}
+
+.go {
+    text-transform: capitalize;
+    padding: 0 10px;
+    margin: 0 5px;
+    text-decoration: none;
+    color: #000000;
+    transition: .5s;
+}
+
+.go:hover {
+    opacity: 0.5;
+    color: #383838;
+}
+
+.dropdown-content {
+    display: none;
+    /* height: 100%; */
+    width: 50%;
+    z-index: 999;
+    margin-left: -20%;
+    position: absolute;
+    background-color: #000000;
+    border-radius: 40px;
+    padding: 30px;
+}
+
+
+/* Show the dropdown content when the parent link is hovered */
+.link-item:hover .dropdown-content {
+    display: block;
+    display: flex;
+    font-size: 20px;
+}
+
+/* Add styling to the dropdown items (optional) */
+.dropdown-item {
+    display: flex;
+    padding: 12px 12px;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Bangers';
+}
+
+.dropdown-item:hover {
+    background-color: #000000;
+}
+
+.row1 {
+    margin-right: 20%;
+
+}
+
+.dropdown-item:hover {
+    background-color: #000000;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOPA - Your Cart</title>
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'img/Topa.png' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/shop.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}"> <!-- Include your custom CSS -->
+</head>
+<body>
+    <nav class="navbar"></nav>
+    <h1 class="cart-title">My Cart</h1>
+    <div class="cart-container">
+
+        <ul class="cart-items-list">
+            {% for cart_item in cart_items %}
+            <li class="cart-item">
+                <div class="item-details">
+                    <img src="{{ cart_item.product.Product_image.url }}" alt="{{ cart_item.product.Product_name }}">
+                    <div class="item-info">
+                        <h2 class="product-name">{{ cart_item.product.Product_name }}</h2>
+                        <p class="item-size">Size: {{ cart_item.size }}</p>
+                        <div class="item-quantity">
+                            <p>Quantity: <span id="quantity-{{ cart_item.id }}" class="quantity">{{ cart_item.quantity }}</span></p>
+                            <button class="change-quantity" data-type="increase" data-cartitem="{{ cart_item.id }}">+</button>
+                            <button class="change-quantity" data-type="decrease" data-cartitem="{{ cart_item.id }}">-</button>
+                            <p>Price: $<span class="product-price" data-original-price="{{ cart_item.product.original_price }}">{{ cart_item.product.original_price }}</span></p>
+                            <p>Total: <span class="total-price">{{ cart_item.product.original_price }}</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-actions">
+                    <form action="{% url 'remove_from_cart' cart_item.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-remove">Remove</button>
+                    </form>
+                </div>
+            </li>
+            {% empty %}
+            <li class="empty-cart">No items in the cart.</li>
+            {% endfor %}
+        </ul>
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <p>Number of Products: <span class="num-products">{{ cart_items|length }}</span></p>
+            <p>Subtotal: $<span id="subtotal" class="subtotal">{{ subtotal }}</span></p>
+            <p>Delivery Charge: $<span id="delivery-charge" class="delivery-charge">{{ delivery_charge }}</span></p>
+            <p>Total: $<span id="total" class="total">{{ total }}</span></p>
+            <a href="{% url 'checkout' %}" class="btn-checkout">Checkout</a>
+
+        </div>
+        
+    </div>
+    <footer></footer>
+    <script src="{% static 'js/nav.js' %}"></script>
+    <script src="{% static 'js/footer.js' %}"></script>
+    <script src="{% static 'js/cart.js' %}"></script>
+</body>
+</html>
